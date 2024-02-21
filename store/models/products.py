@@ -3,6 +3,9 @@ from .category import Category
 
 
 class Products(models.Model):
+    class Meta:
+        verbose_name_plural = "Products"
+
     name = models.CharField(max_length=60)
     price = models.IntegerField(default=0)
     category = models.ForeignKey(Category, on_delete=models.CASCADE, default=None, null=True)

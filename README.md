@@ -7,6 +7,10 @@ The scope of the project is be limited to some functions of the e-commerce websi
 3. Create Django Project: When I execute django-admin startproject command, then it will create a Django project inside the normal project which I already have created here. `django-admin startproject greenshovel`.
 4. Create Django app: When I execute django-admin startapp command, then it will create a Django app of the `greensholemart` inside the normal project which I already have created here. `django-admin startproject store`.
 
+Other modules installations:
+1. `python -m pip install django`
+2. `python -m pip install Pillow`
+
 ## Technologie Used
 1. Python
 2. Django framework
