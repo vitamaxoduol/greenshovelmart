@@ -10,21 +10,71 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-  <title>E-commerce Website</title>
+  <title>Greenshovel</title>
 
   <style>
+    body {
+      {% comment %} overflow: auto; {% endcomment %}
+
+    }
+
     nav{
       background-color: green;
+      z-index: 100;
     }
-    .one-edge-shadow {
+    {% comment %} .one-edge-shadow {
               box-shadow: 0 8px 2px -5px rgb(246, 245, 245);
-}
-.display-8{
-  font-weight: 200;
-  font-size: 30px;
-  font-colour: $teal-200;
-}
+    } {% endcomment %}
+    .display-8{
+      font-weight: 500;
+      font-size: 60px;
+      font-colour: $teal-200;
+    }
+
+    .search-form {
+      margin-top: 0px;
+      padding: 1px;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      background-color: green;
+      padding-top: 0px;
+      overflow: hidden;
+      position: relative;
+     
+    } 
+
+    .search-form form {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: green;
+      z-index: 99;
+      width: 100%;
+      position: fixed;
+      left: 0;
+      right: 0;
+      padding-top: -40px;
+    }
+
+    footer {
+      background-color: grey;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      position: relative;
+      bottom: 0;
+      width: 100%;
+      z-index: 1000;
+    
+    footer a {
+      color: white;
+      margin: 0 15px;
+      text-decoration: none;
+    }
+    
   </style>
+  <link rel="icon" href="https://www.freepnglogos.com/uploads/shopping-cart-png/shopping-cart-svg-png-icon-download-28.png" type="image/x-icon">
 </head>
 
 <body>
@@ -38,12 +88,11 @@
     <a class="navbar-brand ms-3 text-dark " href="/">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 
-    <img src="https://www.freepnglogos.com/uploads/shopping-cart-png/shopping-cart-svg-png-icon-download-28.png" style="width:50px;height:50px,color:text-light;">E-Commerce</a>
+    <img src="https://www.freepnglogos.com/uploads/shopping-cart-png/shopping-cart-svg-png-icon-download-28.png" style="width:50px;height:50px;color:text-light;display-8; color: white;">Greenshovel</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
@@ -52,7 +101,6 @@
         </li>
 
           </ul>
-
 
 
 
@@ -85,11 +133,31 @@
 
       </ul>
 
-
     </div>
+    
   </nav>
+
+
+  <!-- Search form outside the navbar -->
+  <div class="container search-form">
+    <form class="form-inline w-300" method="get" action="{% url 'search' %}">
+        {% csrf_token %}
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="query">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+</div>
+
+
   <!---->
   {% block content %}{% endblock %}
+
+
+  <!-- Footer -->
+  <footer>
+    <p class="display-8">Greenshovel</p>
+    <p>About Us | Contact | Support</p>
+    <p>&copy; 2024 Greenshovel E-commerce. All rights reserved.</p>
+  </footer>
 
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->

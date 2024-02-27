@@ -27,7 +27,16 @@ class Index(View):
         return redirect('homepage')
 
     def get(self, request):
-        return HttpResponseRedirect(f'/store{request.path}')
+        products = Products.get_all_products()
+        categories = Category.get_all_categories()
+        
+        # Fetch products based on the category if provided
+        category_id = request.GET.get('category')
+        if category_id:
+            products = Products.get_all_products_by_categoryid(category_id)
+
+        data = {'products': products, 'categories': categories}
+        return render(request, 'index.html', data)
 
 def store(request):
     cart = request.session.get('cart', {})

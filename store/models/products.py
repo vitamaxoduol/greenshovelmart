@@ -11,18 +11,18 @@ class Products(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE, default=None, null=True)
     description = models.CharField(max_length=250,
                                    default='', blank=True, null=True)
-    image = models.ImageField(upload_to='uploads/products/')
+    image_url = models.URLField(max_length=255, blank=True, null=True)
 
     @staticmethod
     def get_products_by_id(ids):
-        return Products.objects.filter(id_in=ids)
+        return Products.objects.filter(id__in=ids)
     
     @staticmethod
     def get_all_products():
         return Products.objects.all()
     
     @staticmethod
-    def get_allproducts_by_category(category_id):
+    def get_all_products_by_categoryid(category_id):
         if category_id:
             return Products.objects.filter(category=category_id)
         else:

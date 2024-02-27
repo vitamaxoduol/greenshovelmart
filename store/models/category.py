@@ -11,6 +11,10 @@ class Category(models.Model):
     def get_all_categories():
         return Category.objects.all()
     
+    @staticmethod
+    def get_categories_by_id(ids):
+        return Category.objects.filter(id__in=ids)
+    
     def __str__(self):
         return f"Category: {self.name}"
     

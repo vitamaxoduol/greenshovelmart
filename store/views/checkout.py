@@ -6,6 +6,7 @@ from django.views import View
  
 from store.models.products import Products
 from store.models.orders import Order
+from django.contrib import messages
  
  
 class CheckOut(View):
@@ -31,10 +32,13 @@ class CheckOut(View):
 
             request.session['cart'] = {}
 
-            return redirect('cart')
+            # return redirect('cart')
+
+            messages.success(request, 'Your order was placed successfully. Thank you!')
+            return redirect('orders')
 
         except Exception as e:
             # Handle exceptions (ex: database errors) and log them
             print(f"Error during checkout: {str(e)}")
-            return redirect('cart')  # Redirect to cart or another appropriate page
+            return redirect('orders')  # Redirect to cart or another appropriate page
     
